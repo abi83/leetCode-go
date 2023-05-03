@@ -1,16 +1,27 @@
 package Alghorithm
 
-import "fmt"
-
-// TODO: NOT IMPLEMENTED. Make it )
-func binarySearch(nums []int) (int, int) {
-	return 1, 2
-}
+import (
+	"math"
+)
 
 func SortedSquares(nums []int) []int {
-	var firstPositiveIndex int16
-	var firstNegativeIndex int16
-	var zeroIndex int
-	fmt.Println(zeroIndex, firstNegativeIndex, firstPositiveIndex)
-	return []int{1, 2, 3}
+	var leftIndex, rightIndex = 0, len(nums) - 1
+	var i, sqr = rightIndex, 0
+	res := make([]int, len(nums))
+
+	for leftIndex <= rightIndex {
+		leftAbs, rightAbs := int(math.Abs(float64(nums[leftIndex]))), int(math.Abs(float64(nums[rightIndex])))
+
+		if leftAbs >= rightAbs {
+			sqr = nums[leftIndex] * nums[leftIndex]
+			leftIndex++
+		}
+		if rightAbs >= leftAbs {
+			sqr = nums[rightIndex] * nums[rightIndex]
+			rightIndex--
+		}
+		res[i] = sqr
+		i--
+	}
+	return res
 }
